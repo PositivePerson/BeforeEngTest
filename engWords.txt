@@ -1,0 +1,4 @@
+ship
+house OR home
+exit
+anchor

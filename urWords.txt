@@ -1,0 +1,4 @@
+statek
+dom
+wyjscie
+kotwica
