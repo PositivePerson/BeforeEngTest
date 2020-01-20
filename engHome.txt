@@ -1,0 +1,48 @@
+accommodation
+attic
+balcony
+bathroom
+bedroom
+ceiling
+cellar
+central heating
+chimney
+corridor
+dining room
+door
+door mat
+doorbell
+family house
+fireplace
+flat OR apartment
+garret
+gate
+hall
+hedge
+house
+house owner
+house telephone
+kitchen
+letterbox
+lighting
+lightning rod
+living room
+mortgage
+to move in
+to move out
+real estate
+rent
+roof
+room
+running water
+semi-detached house
+sewage system
+suite
+tenement
+threshold
+toilet
+view finder
+wainscot
+wall
+window
+window sill

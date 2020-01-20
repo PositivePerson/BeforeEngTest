@@ -25,7 +25,10 @@ void write(string &writing, int time=0)
 void hintOut(string *currentEngWord,int index, string writing=""){
 	writing=currentEngWord[index][0];
 	writing+=" ";
-	for(int i=0;i<currentEngWord[0].length()-2;i++) writing+="_ ";
+	for(int i=1;i<currentEngWord[index].length()-1;i++){
+		if((int)currentEngWord[index][i]==32) writing+="  ";//if space
+		else writing+="_ ";
+	} 
 	writing+=currentEngWord[index][currentEngWord[index].length()-1];
 	write(writing);
 }
@@ -76,8 +79,13 @@ int main(){
 	
 	while(true){
 		
-	ifstream EnglishWords("engWords.txt");
-	ifstream UrLanguage("urWords.txt");
+	//ifstream EnglishWords("engWords.txt");
+	//ifstream UrLanguage("urWords.txt");
+	
+	string choosenEngFile;
+	string choosenUrFile;
+	
+	string smthToFixWeirdError;
 	
 	string engWord="";
 	string word="";
@@ -87,6 +95,8 @@ int main(){
 	
 	bool correct=false;
 	bool restartProgram=false;
+	
+	int whichSubject=0;
 	
 	int spot_on=0;
 	int corrected=0;
@@ -101,6 +111,51 @@ int main(){
 	int toLearnIndex=0;
 	//string *currentEngWord = new string[answers];
 	
+	
+	//----------------------------MENU----------------------
+	cout<<'\n';
+	writing="	Choose subject:";
+	write(writing);
+	cout<<"\n\n";
+	cout<<"   1 - Family"<<'\n';
+	cout<<"   2 - Home"<<'\n';
+	cout<<"   3 - In the house"<<'\n';
+	cout<<"   4 - KitchenWare"<<'\n';
+	cout<<"\n	";
+	
+	do{
+	cin>>whichSubject;
+	//whichSubject=_getche()-48;
+	
+	switch(whichSubject){
+		case 1:
+			choosenEngFile="engFamily.txt";
+			choosenUrFile="polFamily.txt";
+			break;
+		case 2:
+			choosenEngFile="engHome.txt";
+			choosenUrFile="polHome.txt";
+			break;
+		case 3:
+			choosenEngFile="engInHouse.txt";
+			choosenUrFile="polInHouse.txt";
+			break;
+		case 4:
+			choosenEngFile="engKitchenWare.txt";
+			choosenUrFile="polKitchenWare.txt";
+			break;
+		default:
+			cout<<"Mistake in command\n	";
+			continue;
+	}
+	}while(whichSubject<1 || whichSubject>4);
+	
+	getline(cin, smthToFixWeirdError);
+	Sleep(200);
+	system("CLS");
+	
+	ifstream EnglishWords(choosenEngFile.c_str());
+	ifstream UrLanguage(choosenUrFile.c_str());
 	
 	while(getline(UrLanguage,word) && getline(EnglishWords,engWord)){
 		clearAr(currentEngWord);
@@ -164,6 +219,7 @@ int main(){
 			_Exit(0);
 		}
 	
+		//------------------does-any-of-answer-match-----------
 		correct=false;
 		q=0;
 		while(q<answers){
@@ -224,12 +280,14 @@ int main(){
 				if(wantHint==1){
 					blanks++;
 					wordsToLearn[toLearnIndex]++;
+					for(int i=0;i<answers;i++) cout<<"	"<<currentEngWord[i]<<'\n';
+					Sleep(500);
 					system("CLS");
 					goto surrender;
 				}
 				
 				else if(wantHint==0){
-					
+					wantHint=1;
 				}
 				
 				else{
@@ -321,7 +379,7 @@ int main(){
 	
 	for(int i=0;i<toLearnIndex;i++){
 		if(wordsToLearn[i]==1){
-			cout<<"engWordsToLearn: "<<engWordsToLearn[i]<<'\n';
+			//cout<<"engWordsToLearn: "<<engWordsToLearn[i]<<'\n';
 			
 			writing="'" + urWordsToLearn[i] + "' to po angielsku: ";
 			write(writing);
@@ -410,7 +468,7 @@ int main(){
 				}
 				
 				else if(wantHint==0){
-					
+					wantHint=1;
 				}
 				
 				else{

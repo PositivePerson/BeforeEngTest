@@ -1,0 +1,40 @@
+alarm clock
+armchair
+bed
+bunk beds
+carpet
+chair
+container
+cup
+curtain
+cutlery
+dishwasher
+drawer
+floor
+fork
+freezer
+fridge
+furniture
+glass
+heater
+knife
+lamp
+lock
+mirror
+mug
+oven
+pan
+piece of furniture
+radiator
+sheet
+sink
+soap
+sofa
+spoon
+table
+tablecloth
+tableware
+torch
+wardrobe
+washbasin
+washing machine
