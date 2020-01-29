@@ -269,7 +269,8 @@ int main(){
 	cout<<"   2 - Home"<<'\n';
 	cout<<"   3 - In the house"<<'\n';
 	cout<<"   4 - KitchenWare"<<'\n';
-	cout<<"\n	";
+	cout<<"			Ending round: 'end'\n	";
+	cout<<"		Exit: 'exit'\n	";
 	
 	do{
 		whichSubject=0;
