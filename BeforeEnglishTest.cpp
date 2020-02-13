@@ -48,7 +48,7 @@ void firstHint(string *currentEngWord,int index, int *globalUnveils, int &global
 	else{
 		//-------------unveil-all-em-dashes----------------------
 		for(int i=0;i<currentEngWord[index].length();i++){
-			if(currentEngWord[index][i]=='-'){
+			if(currentEngWord[index][i]=='-' || currentEngWord[index][i]==(char)(32)){
 				globalLetters++;
 				globalUnveils[globalLetters-1] = i;
 				//wordLength--;
@@ -269,6 +269,9 @@ int main(){
 	cout<<"   2 - Home"<<'\n';
 	cout<<"   3 - In the house"<<'\n';
 	cout<<"   4 - KitchenWare"<<'\n';
+	cout<<"   5 - People"<<'\n';
+	cout<<"   6 - Blended"<<'\n';
+	cout<<"   7 - Bank"<<'\n';
 	cout<<"			Ending round: 'end'\n	";
 	cout<<"		Exit: 'exit'\n	";
 	
@@ -294,11 +297,23 @@ int main(){
 			choosenEngFile="engKitchenWareCoded.txt";
 			choosenUrFile="polKitchenWareCoded.txt";
 			break;
+		case 5:
+			choosenEngFile="English_words_part_1.txt";
+			choosenUrFile="Polish_words_part_1.txt";
+			break;
+		case 6:
+			choosenEngFile="English_words_part_2.txt";
+			choosenUrFile="Polish_words_part_2.txt";
+			break;
+		case 7:
+			choosenEngFile="eng_people.txt";
+			choosenUrFile="pol_people.txt";
+			break;
 		default:
 			cout<<"Mistake in command\n	";
 			continue;
 	}
-	}while(whichSubject<1 || whichSubject>4);
+	}while(whichSubject<1 || whichSubject>7);
 	
 	getline(cin, smthToFixWeirdError);
 	Sleep(200);
@@ -308,8 +323,11 @@ int main(){
 	ifstream UrLanguage(choosenUrFile.c_str());
 	
 	while(getline(UrLanguage,word) && getline(EnglishWords,engWord)){
-		word = uncodeIt(word);
-		engWord = uncodeIt(engWord);
+		if(whichSubject<5){
+			word = uncodeIt(word);
+			engWord = uncodeIt(engWord);
+		}
+		
 		
 		clearAr(currentEngWord);
 		countIncorrect=1;
